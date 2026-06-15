@@ -229,9 +229,3 @@ Trained with Adam optimizer, categorical crossentropy loss, 60 epochs — entire
 - Similar-looking signs may be confused with limited training data
 - Requires a dedicated browser tab to stay open while translating (Chrome MV3 restriction)
 - Currently supports ASL finger spelling only (A–Z), not full ASL words or phrases
-
----
-
-## License
-
-MIT
