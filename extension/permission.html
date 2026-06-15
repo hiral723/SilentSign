@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>SilentSign Camera</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: #0f0f0f;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh; color: white;
+    }
+    .card {
+      background: #1a1a1a; border-radius: 16px; padding: 40px;
+      max-width: 420px; width: 90%; text-align: center;
+    }
+    .icon {
+      width: 64px; height: 64px; background: #1a3d2e;
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; margin: 0 auto 20px;
+    }
+    h1 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+    .status { margin-top: 16px; font-size: 14px; color: #888; min-height: 20px; }
+    .status.error   { color: #e53e3e; }
+    .status.success { color: #3ecf8e; }
+    .spinner {
+      width: 36px; height: 36px; border: 3px solid #333;
+      border-top-color: #3ecf8e; border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 16px auto 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .btn {
+      background: #3ecf8e; color: white; border: none;
+      border-radius: 10px; padding: 14px 32px;
+      font-size: 15px; font-weight: 600; cursor: pointer; width: 100%;
+      margin-top: 16px; display: none;
+    }
+    .btn:hover { background: #34b87a; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M23 7l-7 5 7 5V7z" stroke="#3ecf8e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="1" y="5" width="15" height="14" rx="2" stroke="#3ecf8e" stroke-width="1.8"/>
+      </svg>
+    </div>
+    <h1>SilentSign Camera</h1>
+    <div class="spinner" id="spinner"></div>
+    <div class="status" id="status">Starting camera…</div>
+    <button class="btn" id="retryBtn">Try Again</button>
+  </div>
+
+  <video id="video" autoplay muted playsinline style="display:none"></video>
+  <canvas id="canvas" width="320" height="240" style="display:none"></canvas>
+
+  <script src="tfjs/tf.es2017.js"></script>
+  <script src="mediapipe/hands.js"></script>
+  <script src="mediapipe/camera_utils.js"></script>
+  <script src="mediapipe/drawing_utils.js"></script>
+  <script src="permission.js"></script>
+</body>
+</html>

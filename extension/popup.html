@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SilentSign</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+    <header class="header">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="logo-name">SilentSign</div>
+          <div class="logo-sub">Sign language translator</div>
+        </div>
+      </div>
+      <div class="status-pill" id="statusPill">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText">Off</span>
+      </div>
+    </header>
+
+    <div class="camera-card" id="cameraCard">
+      <div class="camera-off-state" id="cameraOff">
+        <div class="camera-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+            <path d="M23 7l-7 5 7 5V7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <p class="camera-off-text">Enable to start translating</p>
+      </div>
+      <canvas id="previewCanvas" class="preview-canvas" width="320" height="240"></canvas>
+
+      <div class="prediction-badge" id="predictionBadge" style="display:none">
+        <span class="prediction-sign" id="predictionSign">—</span>
+        <span class="prediction-conf" id="predictionConf"></span>
+      </div>
+
+      <div class="camera-loading" id="cameraLoading" style="display:none">
+        <div class="loading-spinner"></div>
+        <span id="loadingText">Loading…</span>
+      </div>
+    </div>
+
+    <div class="subtitle-strip" id="subtitleStrip">
+      <div class="subtitle-words" id="subtitleWords">
+        <span class="subtitle-empty">Your translation will appear here…</span>
+      </div>
+      <button class="btn-icon" id="clearBtn" title="Clear">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="controls">
+      <button class="btn-toggle" id="toggleBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" id="toggleIcon">
+          <polygon points="5,3 19,12 5,21" fill="currentColor"/>
+        </svg>
+        <span id="toggleLabel">Start translating</span>
+      </button>
+      <div class="secondary-controls">
+        <button class="btn-secondary" id="overlayBtn" title="Toggle overlay on page">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          Overlay
+        </button>
+        <button class="btn-secondary" id="copyBtn" title="Copy transcript">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+          Copy
+        </button>
+      </div>
+    </div>
+
+    <details class="signs-panel">
+      <summary class="signs-summary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+          <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Supported signs
+      </summary>
+      <div class="signs-grid" id="signsGrid"></div>
+    </details>
+
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

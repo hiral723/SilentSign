@@ -1,0 +1,45 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --mint:       #3ecf8e;
+  --mint-light: #e8f9f1;
+  --mint-mid:   #b8efcf;
+  --mint-dark:  #27a96e;
+  --mint-glow:  rgba(62,207,142,0.15);
+
+  --bg:         #f7f8fa;
+  --surface:    #ffffff;
+  --border:     #e8eaed;
+  --border2:    #d5d9e0;
+
+  --text:       #0f1117;
+  --text2:      #4b5563;
+  --text3:      #9ca3af;
+
+  --red:        #ef4444;
+  --warn:       #f59e0b;
+
+  --radius:     10px;
+  --shadow:     0 1px 4px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.05);
+}
+
+html, body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 14px;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: var(--mint-dark);
+}
+
+button { font-family: inherit; cursor: pointer; }
